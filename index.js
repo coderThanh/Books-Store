@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const app = express();
+const port = process.env.PORT || 5000;
 
 mongoose.connect('mongodb://localhost/book-store', {useNewUrlParser: true});
 
@@ -25,6 +26,6 @@ app.get('/login', reactIndex);
 app.use('/user', userRouter);
 app.use('/product', authMiddleWares.requireLogin, productRouter);
 
-app.listen(5000, () => {
-   console.log('App listening on port 5000')
+app.listen(port, () => {
+   console.log(`App listening on port ${port}`)
 });
