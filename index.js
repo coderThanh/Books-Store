@@ -17,10 +17,10 @@ const authMiddleWares = require('./middlewares/checkLogin.middlewares')
 const userRouter = require('./routes/user.router');
 const productRouter = require('./routes/product.router');
 
-const reactIndex = (req, res) =>  res.sendFile('./react-client/build/index.html', { root: __dirname });
+const reactIndex = (req, res) =>  res.sendFile('./client/build/index.html', { root: __dirname });
 
 app.use(allowCrossDomain);
-app.use( express.static('./react-client/build',{ root: __dirname }));
+app.use( express.static('./client/build',{ root: __dirname }));
 app.get('/login', reactIndex);
 app.use('/user', userRouter);
 app.use('/product', authMiddleWares.requireLogin, productRouter);
