@@ -10,6 +10,6 @@ module.exports.post = async (req,res, next) => {
     const oldProduct = await Products.findById(id);
     oldProduct.count += 1; 
     const product = await Products.findByIdAndUpdate(id, {count: oldProduct.count})
-    return res.redirect('http://localhost:3000/');
+    return res.redirect('/');
     // return;
 }

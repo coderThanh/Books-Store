@@ -14,14 +14,16 @@ app.use(cookieParser('1111'));
 
 const allowCrossDomain = require('./middlewares/allowCrossDomian');
 const authMiddleWares = require('./middlewares/checkLogin.middlewares')
-const loginRouter = require('./routes/login.router');
+const userRouter = require('./routes/user.router');
 const productRouter = require('./routes/product.router');
 
-app.use(allowCrossDomain);
+const reactIndex = (req, res) =>  res.sendFile('./react-client/build/index.html', { root: __dirname });
 
-app.use('/login', loginRouter);
-// app.use('/product', authMiddleWares.requireLogin, productRouter);
-app.use('/product', productRouter);
+app.use(allowCrossDomain);
+app.use( express.static('./react-client/build',{ root: __dirname }));
+app.get('/login', reactIndex);
+app.use('/user', userRouter);
+app.use('/product', authMiddleWares.requireLogin, productRouter);
 
 app.listen(5000, () => {
    console.log('App listening on port 5000')

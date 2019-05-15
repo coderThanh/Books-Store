@@ -14,4 +14,4 @@
 
 - Trang login, khi login thanh công sẽ setCookie
 
-- Khi truy cập vào trang web phải yêu cầu login (bị lỗi CORS nên không làm được)
+- Khi truy cập vào trang web phải yêu cầu login 

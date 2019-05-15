@@ -12,14 +12,14 @@ module.exports.post = async function(req, res) {
 	var user = await User.findOne({email : req.body.email});
 
 	if (!user) {
-		return res.redirect('http://localhost:3000/login');
+		return res.redirect('/login');
 	}
 
 	if ( user.password !== password) {
-		return res.redirect('http://localhost:3000/login');		
+		return res.redirect('/login');		
 	}
 
 	res.cookie('userId', user.id, {signed: true});
-    return res.redirect('http://localhost:3000/');
+    return res.redirect('/');
     
 };
